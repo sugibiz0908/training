@@ -1,2 +1,2 @@
 # training
-杉本真輝hoge
+杉本真輝hogefuga
