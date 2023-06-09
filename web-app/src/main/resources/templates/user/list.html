@@ -8,12 +8,18 @@
     <h1>ユーザー情報：一覧画面</h1>
     <br>
 
+    <div class="float-end">
+     <a th:href="@{/user/add}" class= "btn btn-primary">新規登録はこちら</a>
+    
+    </div>
+
     <table class="table table-striped">
       <thead>
         <tr>
           <th>ID</th>
           <th>名前</th>
-          <th>住所</th>
+          <th>都道府県</th>
+          <th>市区町村・番地</th>
           <th>電話番号</th>
           <th>更新日時</th>
           <th>登録日時</th>
@@ -22,15 +28,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="center" th:text="${id}"></td>
-          <td th:text="${name}"></td>
-          <td th:text="${address}"></td>
-          <td class="center" th:text="${phone}"></td>
+        <tr th:each="user: ${userlist}" th:object="${user}">
+          <td class="center" th:text="*{id}"></td>
+          <td th:text="*{name}"></td>
+          <td th:text="*{prefectures}"></td>
+          <td th:text="*{address}"></td>
+          <td class="center" th:text="*{phone}"></td>
           <td class="center" th:text="${#temporals.format(updateDate, 'yyyy/MM/dd HH:mm:ss')}"></td>
           <td class="center" th:text="${#temporals.format(createDate, 'yyyy/MM/dd HH:mm:ss')}"></td>
           <td class="center" th:text="${#temporals.format(deleteDate, 'yyyy/MM/dd HH:mm:ss')}"></td>
-          <td><a th:href="@{/user/{id}(id=${id})}" class="btn btn-secondary">編集</a></td>
+          <td><a th:href="@{/user/{id}(id=*{id})}" class="btn btn-secondary">編集</a></td>
+          
 
         </tr>
         
