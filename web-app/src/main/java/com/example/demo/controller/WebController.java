@@ -34,12 +34,24 @@ public class WebController {
 		return "index";
 	}
 	
+	/**
+	 * NullPointerExceptionを発生させる。
+	 *
+	 * @return 無し
+	 */
+	
 	@GetMapping(value = "/ex1")
 	public String NullpointerException() {
 		String value = Math.random() < 1 ? null : "a";
 		System.out.println(value.toLowerCase());
 		return "";
 	}
+	
+	/**
+	 * NumberFormatExceptionを発生させる。
+	 *
+	 * @return 無し
+	 */
 	
 	@GetMapping(value = "/ex2")
 	public String NumberFormatException() {
@@ -49,6 +61,12 @@ public class WebController {
 		return "";
 	}
 	
+	/**
+	 * IndexOutOfBoundsExceptionを発生させる。
+	 *
+	 * @return 無し
+	 */
+	
 	@GetMapping(value = "/ex3")
 	public String IndexOutOfBoundsException() {
 		List<String> list = new ArrayList<>();
@@ -56,24 +74,6 @@ public class WebController {
 		return "";
 		
 	}
-	
-	public class NullPointerExceptionSample {
-		  public static void main(String[] args) {
-			//int[] array = {1, 2, 3};
-			//array（参照型）がnullの場合NullPointerExceptionがでる。
-//		    array = null;
-//		  //存在しないインデックスで検索するとIndexOutOfBoundsException例外がでるarray[0] = 10;
-//		    System.out.println(array[4]);
-  
-			  
-			  
-	      //NumberFormatException例外がでる例
-		  //文字列を数値型に変換しようとしたときに
-		  //文字列が数値型に適した状態でない場合
-			      int i = Integer.parseInt("三");
-			      System.out.println(i); 
-		  }
-		}
 }
 
 
