@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
@@ -19,8 +20,13 @@ import jakarta.transaction.Transactional;
 @Service
 public class UserService {
 
+	private static ListCrudRepository<User, Long> prefecturesRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	public UserService(UserRepository userRepository) {
+	    this.userRepository = userRepository;
+	}
 
 	/**
 	 * 全てのユーザー情報を取得します。
@@ -93,7 +99,4 @@ public class UserService {
 			throw new OptimisticLockException(message);
 		}
 	}
-	
-	
-	
 }

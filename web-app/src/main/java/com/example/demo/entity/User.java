@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -26,7 +27,8 @@ import lombok.Data;
 @Data
 @Table(name = "users")
 public class User {
-
+	@Transient
+	private String prefectureName;
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +38,7 @@ public class User {
 	@NotBlank(message = "名前を入力してください")
 	@Size(max = 50,message = "名前は50文字以内で入力してください")
 	private String name;
-
+	
 	@Column(name = "prefectures")
 	private String prefectures;
 	
@@ -61,3 +63,5 @@ public class User {
 	private LocalDateTime deleteDate;
 
 }
+
+
