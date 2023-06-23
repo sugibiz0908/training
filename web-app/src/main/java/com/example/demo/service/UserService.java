@@ -46,7 +46,7 @@ public class UserService {
 	 */
 
 	public User search(Long id) {
-		// TODO 自動生成されたメソッド・スタブ
+		
 		return userRepository.findById(id).get();
 	}
 	
