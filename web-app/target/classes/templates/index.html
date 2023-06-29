@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/head :: head_fragment(scripts = ~{::script}, links = ~{::link})}">
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>Index画面</h1>
+    <br>
+
+    <p th:text="${message}"></p>
+    <p th:text="${#temporals.format(datetime, 'yyyy/MM/dd HH:mm:ss')}"></p>
+    <br> <a th:href="@{/user/list}" class="btn-primary">ユーザー情報一覧はこちら</a>
+  </div>
+
+</body>
+</html>

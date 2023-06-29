@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/head :: head_fragment(scripts = ~{::script}, links = ~{::link})}">
+</head>
+<body>
+
+  <div class="container">
+    <h1>ユーザー情報：一覧画面</h1>
+    <br>
+
+    <div class="float-end">
+     <a th:href="@{/user/add}" class= "btn btn-primary">新規登録はこちら</a>
+    
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>都道府県</th>
+          <th>市区町村・番地</th>
+          <th>電話番号</th>
+          <th>更新日時</th>
+          <th>登録日時</th>
+          <th>削除日時</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="user: ${userlist}" th:object="${user}">
+          <td class="center" th:text="*{id}"></td>
+          <td th:text="*{name}"></td>
+          <td th:text="*{prefectures}"></td>
+          
+          <td th:text="*{address}"></td>
+          <td class="center" th:text="*{phone}"></td>
+          <td class="center" th:text="${#temporals.format(updateDate, 'yyyy/MM/dd HH:mm:ss')}"></td>
+          <td class="center" th:text="${#temporals.format(createDate, 'yyyy/MM/dd HH:mm:ss')}"></td>
+          <td class="center" th:text="${#temporals.format(deleteDate, 'yyyy/MM/dd HH:mm:ss')}"></td>
+          <td><a th:href="@{/user/{id}(id=*{id})}" class="btn btn-secondary">編集</a></td>
+          
+
+        </tr>
+        
+
+      </tbody>
+
+
+
+    </table>
+
+  </div>
+</body>
+</html>

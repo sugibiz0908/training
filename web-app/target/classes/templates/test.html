@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="プルダウン"></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="container">
+        <h1>プルダウンサンプル</h1>
+        <select>
+            <option value="00"></option>
+            <option
+                th:each="prefectures : ${prefecturesList}"
+                th:value="${prefectures.code}"
+                th:text="${prefectures.name}"
+                th:selected="${prefectures.code == selectedValue}">
+            </option>
+        </select>
+    </div>
+</body>
+</html>
